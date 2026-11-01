@@ -190,7 +190,7 @@ python scripts/start_bhumix.py
 - [Full Research Feasibility Dossier](docs/research/feasibility_dossier.md)
 - [BibTeX References](docs/research/references.bib)
 - [Pitch Deck (5-7 Slides)](docs/pitch_deck.md)
-- [Demo Video Walkthrough Script](docs/demo_video_script.md)
+
 - [Feature Status Registry](docs/feature_status_registry.md)
 
 ---
