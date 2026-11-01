@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { runAgentConsultation } from '../services/api';
 import { AgentConsultationResponse } from '../types';
 import { ShieldCheck, ArrowRight, CheckCircle, AlertTriangle, UserCheck, BookOpen, Layers, RefreshCw } from 'lucide-react';
@@ -17,10 +17,12 @@ export const DecisionAgentView: React.FC<DecisionAgentViewProps> = ({
   const [crop, setCrop] = useState<string>('Maize');
   const [consultResult, setConsultResult] = useState<AgentConsultationResponse | null>(null);
   const [isRunning, setIsRunning] = useState<boolean>(false);
+  const [error, setError] = useState<string | null>(null);
   const [approvedActions, setApprovedActions] = useState<Record<number, boolean>>({});
 
   const handleRunAgent = async () => {
     setIsRunning(true);
+    setError(null);
     try {
       const res = await runAgentConsultation(
         selectedDistrict,
@@ -30,12 +32,18 @@ export const DecisionAgentView: React.FC<DecisionAgentViewProps> = ({
       );
       setConsultResult(res);
       setApprovedActions({});
-    } catch (e) {
+    } catch (e: any) {
       console.error(e);
+      setError(e?.message || 'Agent consultation connection error. Retrying...');
     } finally {
       setIsRunning(false);
     }
   };
+
+  // Automatically execute agent consultation on mount or when district/crop changes
+  useEffect(() => {
+    handleRunAgent();
+  }, [selectedDistrict, crop, isCloudCovered, isSimulatedDrought]);
 
   const toggleApproval = (idx: number) => {
     setApprovedActions((prev) => ({ ...prev, [idx]: !prev[idx] }));
@@ -81,6 +89,34 @@ export const DecisionAgentView: React.FC<DecisionAgentViewProps> = ({
           </div>
         </div>
       </div>
+
+      {isRunning && !consultResult && (
+        <div className="bg-charcoal-900 border border-charcoal-700 rounded-lg p-10 text-center space-y-4">
+          <RefreshCw className="w-8 h-8 text-forest-400 animate-spin mx-auto" />
+          <h4 className="text-sm font-mono font-bold text-ivory-100">
+            Executing Autonomous Multi-Tool Agent Pipeline...
+          </h4>
+          <p className="text-xs text-ivory-400 max-w-md mx-auto">
+            Step 1: Validating Geography & Soil Context → Step 2: Querying Copernicus SAR/Optical → Step 3: Conformal Inference → Step 4: Retrieving UAS Dharwad Practices.
+          </p>
+        </div>
+      )}
+
+      {error && !consultResult && (
+        <div className="bg-danger-950/40 border border-danger-700/50 rounded-lg p-6 text-center space-y-3">
+          <AlertTriangle className="w-8 h-8 text-danger-400 mx-auto" />
+          <h4 className="text-sm font-mono font-bold text-danger-200">
+            Agent Consultation Connection Notice
+          </h4>
+          <p className="text-xs text-danger-300">{error}</p>
+          <button
+            onClick={handleRunAgent}
+            className="px-4 py-2 bg-danger-600 hover:bg-danger-500 text-white rounded font-mono text-xs font-bold transition-all inline-flex items-center gap-2"
+          >
+            <RefreshCw className="w-3.5 h-3.5" /> Retry Agent Consultation
+          </button>
+        </div>
+      )}
 
       {consultResult && (
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
