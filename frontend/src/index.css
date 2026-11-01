@@ -1,0 +1,119 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    background-color: #0c100e;
+    color: #f1eee7;
+  }
+}
+
+/* Custom scientific scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #121614;
+}
+::-webkit-scrollbar-thumb {
+  background: #252c28;
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #40916c;
+}
+
+/* Precision High-Tech GIS Crosshair Target Reticle */
+.bhumi-gis-map,
+.bhumi-gis-map .leaflet-container,
+.bhumi-gis-map .leaflet-grab,
+.bhumi-gis-map .leaflet-interactive,
+.bhumi-gis-map .leaflet-tile-pane,
+.bhumi-gis-map .leaflet-pane,
+.bhumi-gis-map path.leaflet-interactive {
+  cursor: url("data:image/svg+xml,%3Csvg width='32' height='32' viewBox='0 0 32 32' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='16' cy='16' r='8' stroke='%23000000' stroke-width='3' opacity='0.7'/%3E%3Ccircle cx='16' cy='16' r='8' stroke='%2338bdf8' stroke-width='1.5' stroke-dasharray='3 2'/%3E%3Cline x1='16' y1='1' x2='16' y2='9' stroke='%23000000' stroke-width='3.5' stroke-linecap='round' opacity='0.7'/%3E%3Cline x1='16' y1='23' x2='16' y2='31' stroke='%23000000' stroke-width='3.5' stroke-linecap='round' opacity='0.7'/%3E%3Cline x1='1' y1='16' x2='9' y2='16' stroke='%23000000' stroke-width='3.5' stroke-linecap='round' opacity='0.7'/%3E%3Cline x1='23' y1='16' x2='31' y2='16' stroke='%23000000' stroke-width='3.5' stroke-linecap='round' opacity='0.7'/%3E%3Cline x1='16' y1='1' x2='16' y2='9' stroke='%2338bdf8' stroke-width='1.5' stroke-linecap='round'/%3E%3Cline x1='16' y1='23' x2='16' y2='31' stroke='%2338bdf8' stroke-width='1.5' stroke-linecap='round'/%3E%3Cline x1='1' y1='16' x2='9' y2='16' stroke='%2338bdf8' stroke-width='1.5' stroke-linecap='round'/%3E%3Cline x1='23' y1='16' x2='31' y2='16' stroke='%2338bdf8' stroke-width='1.5' stroke-linecap='round'/%3E%3Ccircle cx='16' cy='16' r='2.5' fill='%23000000'/%3E%3Ccircle cx='16' cy='16' r='1.5' fill='%23ffffff'/%3E%3C/svg%3E") 16 16, crosshair !important;
+}
+
+.bhumi-gis-map .leaflet-marker-icon,
+.bhumi-gis-map .leaflet-popup-pane,
+.bhumi-gis-map .leaflet-control,
+.bhumi-gis-map button,
+.bhumi-gis-map a,
+.bhumi-map-pin {
+  cursor: pointer !important;
+}
+
+/* 100% Solid, Non-Glittering Leaflet Custom Dark Theme Popup & Tooltips */
+.leaflet-popup,
+.leaflet-fade-anim .leaflet-popup,
+.leaflet-fade-anim .leaflet-map-pane .leaflet-popup {
+  opacity: 1 !important;
+  transition: none !important;
+  animation: none !important;
+}
+
+.bhumi-custom-popup .leaflet-popup-content-wrapper,
+.leaflet-popup-content-wrapper {
+  background: #090e1c !important;
+  color: #f8fafc !important;
+  border: 1.5px solid #38bdf8 !important;
+  border-radius: 12px !important;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.95), 0 0 20px rgba(56, 189, 248, 0.2) !important;
+  padding: 0 !important;
+  overflow: hidden !important;
+  opacity: 1 !important;
+}
+
+.bhumi-custom-popup .leaflet-popup-content,
+.leaflet-popup-content {
+  margin: 0 !important;
+  padding: 0 !important;
+  line-height: 1.4 !important;
+  opacity: 1 !important;
+}
+
+.leaflet-popup-tip-container {
+  overflow: visible !important;
+}
+
+.leaflet-popup-tip {
+  background: #090e1c !important;
+  border-left: 1.5px solid #38bdf8 !important;
+  border-bottom: 1.5px solid #38bdf8 !important;
+  box-shadow: none !important;
+}
+
+.leaflet-container a.leaflet-popup-close-button {
+  color: #94a3b8 !important;
+  padding: 8px 10px 0 0 !important;
+  font-size: 18px !important;
+  font-weight: bold !important;
+  transition: color 0.15s ease !important;
+  z-index: 20 !important;
+}
+
+.leaflet-container a.leaflet-popup-close-button:hover {
+  color: #38bdf8 !important;
+}
+
+/* Tooltip Solid Styling */
+.leaflet-tooltip {
+  background: #090e1c !important;
+  color: #f8fafc !important;
+  border: 1px solid #334155 !important;
+  border-radius: 6px !important;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.85) !important;
+  padding: 6px 8px !important;
+  opacity: 1 !important;
+}
+.leaflet-tooltip-top:before {
+  border-top-color: #090e1c !important;
+}
+.leaflet-tooltip-bottom:before {
+  border-bottom-color: #090e1c !important;
+}
+
+
+

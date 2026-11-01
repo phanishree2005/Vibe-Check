@@ -1,0 +1,38 @@
+{
+  "model_name": "BHUMI-X (Reliability-Aware Resolution-Adaptive Multi-Scale Network)",
+  "temporal_evaluation_2024_2025": {
+    "f1_score": 0.8676,
+    "precision": 0.8045,
+    "recall": 0.9415,
+    "auroc": 0.9784,
+    "brier_score": 0.0521,
+    "regression_delta_swdi_rmse": 2.6095,
+    "sample_count": 1460
+  },
+  "conformal_uncertainty_quantification": {
+    "nominal_target_coverage": "90.0%",
+    "empirical_coverage_achieved": "92.6%",
+    "conformal_q_hat": 0.4095,
+    "mahalanobis_ood_threshold": 125.19,
+    "abstention_rate": "8.7%"
+  },
+  "missing_modality_robustness_e7": {
+    "test_scenario": "100% Optical Cloud Occlusion (Kharif Blindout)",
+    "cloud_blindout_auroc": 0.9695,
+    "cloud_blindout_f1": 0.8283,
+    "performance_retention_pct": "95.47%"
+  },
+  "spatial_generalization_lodo_e8": {
+    "held_out_district": "Gadag (Zone 3 Dry Drought-Prone)",
+    "lodo_auroc": 0.958,
+    "lodo_f1_score": 0.8971,
+    "sample_count": 751
+  },
+  "dynamic_modality_attention_weights": {
+    "optical_weight": 0.0085,
+    "sar_weight": 0.0027,
+    "met_weight": 0.4494,
+    "soil_weight": 0.5368,
+    "geo_weight": 0.0026
+  }
+}
